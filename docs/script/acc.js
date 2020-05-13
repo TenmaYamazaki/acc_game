@@ -111,7 +111,7 @@ if (DeviceOrientationEvent &&
   console.log("NG");
 }
 
-document.getElementById("wrap").addEventListener("touchend", function(){
+document.getElementById("check").addEventListener("touchend", function(){
   console.log("aaaaaaaaaa");
   if (
   DeviceMotionEvent &&
