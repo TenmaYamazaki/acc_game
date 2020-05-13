@@ -111,6 +111,24 @@ if (DeviceOrientationEvent &&
   console.log("NG");
 }
 
+document.getElementById("check").addEventListener("touchend", function(){
+  console.log("aaaaaaaaaa");
+  if (
+  DeviceMotionEvent &&
+  DeviceMotionEvent.requestPermission &&
+  typeof DeviceMotionEvent.requestPermission === 'function'
+  ) {
+  DeviceMotionEvent.requestPermission();
+  }
+  if (
+  DeviceOrientationEvent &&
+  DeviceOrientationEvent.requestPermission &&
+  typeof DeviceOrientationEvent.requestPermission === 'function'
+  ) {
+  DeviceOrientationEvent.requestPermission();
+  }
+  })
+
 window.addEventListener("devicemotion", devicemotionHandler);
 window.addEventListener("DOMContentLoaded", drawCircle(xx, yy, rad));
 
@@ -152,31 +170,31 @@ function devicemotionHandler(event){
 
 function gameover() {
   var avetime = (sumtime - 0) / level;
-  var name = prompt("ゲームオーバー！！\n最終到達レベル" + level + "\n1ステージの平均タイムは" + avetime.toFixed(2) + "秒です\n合計スコアは" + sumscore + "です\nブレーキを使用した回数の合計は" + sumbreeki + "回です");
+  // var name = prompt("ゲームオーバー！！\n最終到達レベル" + level + "\n1ステージの平均タイムは" + avetime.toFixed(2) + "秒です\n合計スコアは" + sumscore + "です\nブレーキを使用した回数の合計は" + sumbreeki + "回です");
     
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", "/addrank", true);
-  xhr.setRequestHeader("Content-Type", 'application/json');
-  //xhr.send("name=aaa");
-  const j = { name: name, score: sumscore, gamecode: "acc" };
-  xhr.send(JSON.stringify(j));
+  // const xhr = new XMLHttpRequest();
+  // xhr.open("POST", "/addrank", true);
+  // xhr.setRequestHeader("Content-Type", 'application/json');
+  // //xhr.send("name=aaa");
+  // const j = { name: name, score: sumscore, gamecode: "acc" };
+  // xhr.send(JSON.stringify(j));
   
-  if(window.confirm("リトライしますか")) {
-  location.href = "/acc/play";
-  } else {
-  location.href = "/";
+  // if(window.confirm("リトライしますか")) {
+  // location.href = "/acc/play";
+  // } else {
+  // location.href = "/";
   
-  }
-//  if(level == 0){
-//    alert("ゲームオーバー！！");
-//  }else{
-//    alert("ゲームオーバー！！\n最終到達レベル" + level + "\n1ステージの平均タイムは" + avetime.toFixed(2) + "秒です\n合計スコアは" + sumscore + "です\nブレーキを使用した回数の合計は" + sumbreeki + "回です");
-//  }
-//  sumtime = 0;
-//  sumscore = 0;
-//  sumbreeki = 0;
-//  level = 0;
-//  restart();
+  // }
+ if(level == 0){
+   alert("ゲームオーバー！！");
+ }else{
+   alert("ゲームオーバー！！\n最終到達レベル" + level + "\n1ステージの平均タイムは" + avetime.toFixed(2) + "秒です\n合計スコアは" + sumscore + "です\nブレーキを使用した回数の合計は" + sumbreeki + "回です");
+ }
+ sumtime = 0;
+ sumscore = 0;
+ sumbreeki = 0;
+ level = 0;
+ restart();
 }
 
 
