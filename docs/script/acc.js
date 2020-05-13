@@ -1,8 +1,8 @@
 /**
  * 
  */
-// var os = "Android";
-var os = "iPhone";
+var os = "Android";
+// var os = "iPhone";
 var accrev = 1;
 if (navigator.userAgent.indexOf(os) > 0){
   accrev = -1;
