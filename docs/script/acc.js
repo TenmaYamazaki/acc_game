@@ -102,12 +102,13 @@ var HEIGHT = 300;
 
 var date = new Date().getTime();
 
-if (
-  DeviceMotionEvent &&
-  DeviceMotionEvent.requestPermission &&
-  typeof DeviceMotionEvent.requestPermission === 'function'
-) {
-  DeviceMotionEvent.requestPermission();
+if (DeviceOrientationEvent &&
+  DeviceOrientationEvent.requestPermission &&
+  typeof DeviceOrientationEvent.requestPermission === 'function') {
+    console.log("OK");
+    DeviceOrientationEvent.requestPermission();
+} else {
+  console.log("NG");
 }
 
 window.addEventListener("devicemotion", devicemotionHandler);
