@@ -102,13 +102,15 @@ var HEIGHT = 300;
 
 var date = new Date().getTime();
 
-DeviceMotionEvent.requestPermission()
-.then(permissionState => {
-  if(permissionState === 'granted') {
-    window.addEventListener("devicemotion", devicemotionHandler);
-  }
-})
+if (
+  DeviceMotionEvent &&
+  DeviceMotionEvent.requestPermission &&
+  typeof DeviceMotionEvent.requestPermission === 'function'
+) {
+  DeviceMotionEvent.requestPermission();
+}
 
+window.addEventListener("devicemotion", devicemotionHandler);
 window.addEventListener("DOMContentLoaded", drawCircle(xx, yy, rad));
 
 //タイムカウント用
