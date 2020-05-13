@@ -111,18 +111,23 @@ if (DeviceOrientationEvent &&
   console.log("NG");
 }
 
-document.getElementById("check").addEventListener("touchend", function(){
-    if (DeviceMotionEvent &&
-          DeviceMotionEvent.requestPermission &&
-          typeof DeviceMotionEvent.requestPermission === 'function') {
-      DeviceMotionEvent.requestPermission();
-    }
-    if (DeviceOrientationEvent &&
-          DeviceOrientationEvent.requestPermission &&
-          typeof DeviceOrientationEvent.requestPermission === 'function') {
-      DeviceOrientationEvent.requestPermission();
-    }
-})
+document.getElementById("wrap").addEventListener("touchend", function(){
+  console.log("aaaaaaaaaa");
+  if (
+  DeviceMotionEvent &&
+  DeviceMotionEvent.requestPermission &&
+  typeof DeviceMotionEvent.requestPermission === 'function'
+  ) {
+  DeviceMotionEvent.requestPermission();
+  }
+  if (
+  DeviceOrientationEvent &&
+  DeviceOrientationEvent.requestPermission &&
+  typeof DeviceOrientationEvent.requestPermission === 'function'
+  ) {
+  DeviceOrientationEvent.requestPermission();
+  }
+  })
 
 window.addEventListener("devicemotion", devicemotionHandler);
 window.addEventListener("DOMContentLoaded", drawCircle(xx, yy, rad));
@@ -434,17 +439,4 @@ function restart() {
         }
     }
 
-}
-
-function getParmission() {
-  if (DeviceMotionEvent &&
-    DeviceMotionEvent.requestPermission &&
-    typeof DeviceMotionEvent.requestPermission === 'function') {
-DeviceMotionEvent.requestPermission();
-}
-if (DeviceOrientationEvent &&
-    DeviceOrientationEvent.requestPermission &&
-    typeof DeviceOrientationEvent.requestPermission === 'function') {
-DeviceOrientationEvent.requestPermission();
-}
 }
