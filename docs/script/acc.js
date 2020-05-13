@@ -102,35 +102,8 @@ var HEIGHT = 300;
 
 var date = new Date().getTime();
 
-if (DeviceOrientationEvent &&
-  DeviceOrientationEvent.requestPermission &&
-  typeof DeviceOrientationEvent.requestPermission === 'function') {
-    console.log("OK");
-    DeviceOrientationEvent.requestPermission();
-} else {
-  console.log("NG");
-}
-
-document.getElementById("check").addEventListener("touchend", function(){
-  console.log("aaaaaaaaaa");
-  if (
-  DeviceMotionEvent &&
-  DeviceMotionEvent.requestPermission &&
-  typeof DeviceMotionEvent.requestPermission === 'function'
-  ) {
-  DeviceMotionEvent.requestPermission();
-  }
-  if (
-  DeviceOrientationEvent &&
-  DeviceOrientationEvent.requestPermission &&
-  typeof DeviceOrientationEvent.requestPermission === 'function'
-  ) {
-  DeviceOrientationEvent.requestPermission();
-  }
-  })
-
 window.addEventListener("devicemotion", devicemotionHandler);
-window.addEventListener("DOMContentLoaded", drawCircle(xx, yy, rad));
+window.addEventListener("DOMContentLoaded", initialize(xx, yy, rad));
 
 //タイムカウント用
 setInterval(function(){
@@ -371,7 +344,8 @@ function moveCircle() {
 
 
 //円を作るfunction
-function drawCircle(pointX, pointY, rad){
+function initialize(pointX, pointY, rad){
+  getParmission();
   return function(){
     for(var i = 0; i < kosu; ++i){
 
@@ -439,4 +413,17 @@ function restart() {
         }
     }
 
+}
+
+function getParmission() {
+  if (DeviceMotionEvent &&
+      DeviceMotionEvent.requestPermission &&
+      typeof DeviceMotionEvent.requestPermission === 'function') {
+  DeviceMotionEvent.requestPermission();
+  }
+  if (DeviceOrientationEvent &&
+      DeviceOrientationEvent.requestPermission &&
+      typeof DeviceOrientationEvent.requestPermission === 'function') {
+  DeviceOrientationEvent.requestPermission();
+  }
 }
