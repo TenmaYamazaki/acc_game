@@ -8,15 +8,15 @@ workbox.precaching.precacheAndRoute([
         revision:'12345'
     },
     {
-        url:'/script/acc.js',
+        url:'/acc.js',
         revision:'12345'
     },
     {
-        url:'/style/acc.css',
+        url:'/acc.css',
         revision:'12345'
     }
 ]);
 
 self.addEventListener('fetch', function(e) {
 
-});
+}); 
