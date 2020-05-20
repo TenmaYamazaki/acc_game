@@ -4,6 +4,10 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox
 // ファイルのキャッシュ
 workbox.precaching.precacheAndRoute([
     {
+        url:'/acc_game',
+        revision:'12345'
+    },
+    {
         url:'./index.html',
         revision:'12345'
     },
